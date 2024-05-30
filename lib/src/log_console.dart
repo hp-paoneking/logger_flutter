@@ -105,17 +105,12 @@ class _LogConsoleState extends State<LogConsole> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: widget.dark
-          ? ThemeData(
-              brightness: Brightness.dark,
-              accentColor: Colors.blueGrey,
-            )
-          : ThemeData(
-              brightness: Brightness.light,
-              accentColor: Colors.lightBlueAccent,
-            ),
+          ? theme.copyWith(brightness: Brightness.dark, colorScheme: theme.colorScheme.copyWith(secondary: Colors.blueGrey))
+          : theme.copyWith(brightness: Brightness.light, colorScheme: theme.colorScheme.copyWith(secondary: Colors.lightBlueAccent)),
       home: Scaffold(
         body: SafeArea(
           child: Column(
